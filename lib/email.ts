@@ -39,11 +39,11 @@ export async function sendConfirmationEmail(
       subject: "뉴스레터 구독을 완료해주세요",
       html: `
         <div style="font-family: sans-serif; max-width: 480px; margin: 0 auto;">
-          <h2>구독 인증이 필요합니다</h2>
+          <h2 style="color:#581c87;">구독 인증이 필요합니다</h2>
           <p>아래 버튼을 눌러 뉴스레터 구독을 완료해주세요. 이 링크는 24시간 동안만 유효합니다.</p>
           <p style="margin: 24px 0;">
             <a href="${confirmUrl}"
-               style="background:#111827;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;">
+               style="background:#9333ea;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;">
               구독 인증하기
             </a>
           </p>
@@ -78,10 +78,10 @@ export async function sendWelcomeEmail(email: string, unsubscribeToken: string):
       subject: "구독이 완료되었습니다",
       html: `
         <div style="font-family: sans-serif; max-width: 480px; margin: 0 auto;">
-          <h2>구독해주셔서 감사합니다!</h2>
+          <h2 style="color:#581c87;">구독해주셔서 감사합니다!</h2>
           <p>이제부터 정기 뉴스레터를 받아보실 수 있습니다.</p>
           <p style="color:#6b7280;font-size:12px;margin-top:32px;">
-            더 이상 받고 싶지 않다면 <a href="${unsubscribeUrl}">여기</a>를 눌러 언제든 구독을 해지할 수 있습니다.
+            더 이상 받고 싶지 않다면 <a href="${unsubscribeUrl}" style="color:#7e22ce;">여기</a>를 눌러 언제든 구독을 해지할 수 있습니다.
           </p>
         </div>
       `,
