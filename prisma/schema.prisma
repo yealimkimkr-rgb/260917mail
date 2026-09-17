@@ -1,0 +1,39 @@
+// Prisma schema for the newsletter double opt-in subscription service.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum SubscriberStatus {
+  PENDING // 이메일 인증 대기 중 (마케팅 메일 발송 금지)
+  CONFIRMED // 더블 옵트인 완료, 정기 뉴스레터 수신 가능
+  UNSUBSCRIBED // 구독 해지됨
+}
+
+model Subscriber {
+  id     String            @id @default(uuid())
+  email  String            @unique
+  status SubscriberStatus  @default(PENDING)
+
+  // 수신동의(개인정보 처리방침) 동의 시각 - 법적 근거 기록용
+  consentedAt DateTime
+
+  // 더블 옵트인 인증에 사용되는 1회성 토큰. 인증 완료 또는 만료 시 재사용 불가.
+  confirmToken          String?   @unique
+  confirmTokenExpiresAt DateTime?
+  confirmedAt           DateTime?
+
+  // 구독 해지에 사용되는 추측 불가능한 토큰. CONFIRMED가 된 이후에도 유지된다.
+  unsubscribeToken String    @unique @default(uuid())
+  unsubscribedAt   DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+}
