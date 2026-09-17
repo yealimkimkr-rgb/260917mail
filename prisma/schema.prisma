@@ -37,3 +37,28 @@ model Subscriber {
 
   @@index([status])
 }
+
+enum QuestionStatus {
+  PENDING // 질문만 등록됨 (AI 초안 생성 실패/미시도)
+  DRAFTED // Gemini가 답변 초안을 생성함, 관리자 게시 대기 중
+  ANSWERED // 관리자가 최종 답변을 게시함
+}
+
+model Question {
+  id            String         @id @default(uuid())
+  question      String
+  askerName     String?
+
+  // 방문자가 입력한 Gemini API 키로 클라이언트에서 직접 생성한 답변 초안.
+  // API 키 자체는 서버에 전송/저장하지 않는다.
+  aiDraftAnswer String?
+
+  // 관리자가 검토 후 게시하는 최종 답변.
+  answer String?
+  status QuestionStatus @default(PENDING)
+
+  createdAt  DateTime  @default(now())
+  answeredAt DateTime?
+
+  @@index([status])
+}

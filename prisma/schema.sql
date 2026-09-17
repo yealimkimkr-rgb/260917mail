@@ -35,3 +35,24 @@ CREATE TRIGGER trg_subscribers_updated_at
 BEFORE UPDATE ON subscribers
 FOR EACH ROW
 EXECUTE FUNCTION set_updated_at();
+
+CREATE TYPE question_status AS ENUM ('PENDING', 'DRAFTED', 'ANSWERED');
+
+CREATE TABLE questions (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  question        TEXT NOT NULL,
+  asker_name      TEXT,
+
+  -- 방문자가 입력한 Gemini API 키로 클라이언트에서 직접 생성한 답변 초안.
+  -- API 키 자체는 서버에 전송/저장하지 않는다.
+  ai_draft_answer TEXT,
+
+  -- 관리자가 검토 후 게시하는 최종 답변.
+  answer          TEXT,
+  status          question_status NOT NULL DEFAULT 'PENDING',
+
+  created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
+  answered_at     TIMESTAMPTZ
+);
+
+CREATE INDEX idx_questions_status ON questions (status);

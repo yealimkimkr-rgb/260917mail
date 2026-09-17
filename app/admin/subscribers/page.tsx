@@ -54,6 +54,11 @@ export default async function AdminSubscribersPage({
         전체 {subscribers.length}명 · 인증대기 {counts.PENDING ?? 0} · 구독중{" "}
         {counts.CONFIRMED ?? 0} · 해지 {counts.UNSUBSCRIBED ?? 0}
       </p>
+      <p className="mt-1 text-sm">
+        <a href={`/admin/questions?key=${searchParams.key}`} className="text-purple-700 underline">
+          질문 관리로 이동
+        </a>
+      </p>
 
       <table className="mt-6 w-full border-collapse text-sm">
         <thead>
