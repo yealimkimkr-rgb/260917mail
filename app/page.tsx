@@ -8,6 +8,15 @@ export default function HomePage() {
         <p className="mt-2 text-gray-600">이메일을 입력하면 인증 메일을 보내드립니다.</p>
       </div>
       <SubscribeForm />
+      <p className="text-sm text-gray-600">
+        <a href="/ask" className="text-purple-700 underline">
+          궁금한 점 물어보기
+        </a>{" "}
+        ·{" "}
+        <a href="/qna" className="text-purple-700 underline">
+          Q&amp;A 보기
+        </a>
+      </p>
     </main>
   );
 }
