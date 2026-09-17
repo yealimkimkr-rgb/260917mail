@@ -18,9 +18,9 @@ export default function UnsubscribedPage({
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-3 px-4 text-center">
-      <h1 className="text-2xl font-bold">{copy.title}</h1>
+      <h1 className="text-2xl font-bold text-purple-900">{copy.title}</h1>
       <p className="text-gray-600">{copy.body}</p>
-      <a href="/" className="mt-4 underline">
+      <a href="/" className="mt-4 text-purple-700 underline">
         메인으로 돌아가기
       </a>
     </main>

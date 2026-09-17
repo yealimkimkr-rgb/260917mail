@@ -79,7 +79,7 @@ export default function SubscribeForm() {
           className={`mt-1 w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none focus:ring-2 ${
             emailError
               ? "border-red-400 focus:ring-red-300"
-              : "border-gray-300 focus:ring-gray-400"
+              : "border-gray-300 focus:ring-purple-400"
           }`}
           aria-invalid={Boolean(emailError)}
           aria-describedby={emailError ? "email-error" : undefined}
@@ -112,11 +112,11 @@ export default function SubscribeForm() {
           type="checkbox"
           checked={consent}
           onChange={(e) => setConsent(e.target.checked)}
-          className="mt-1 h-4 w-4 rounded border-gray-300"
+          className="mt-1 h-4 w-4 rounded border-gray-300 text-purple-600 focus:ring-purple-400"
         />
         <label htmlFor="consent" className="text-sm text-gray-600">
           뉴스레터 수신에 동의하며,{" "}
-          <a href="/privacy" target="_blank" className="underline">
+          <a href="/privacy" target="_blank" className="text-purple-700 underline">
             개인정보 처리방침
           </a>
           을 확인했습니다.
@@ -126,7 +126,7 @@ export default function SubscribeForm() {
       <button
         type="submit"
         disabled={!canSubmit}
-        className="w-full rounded-md bg-gray-900 px-4 py-2 text-white shadow-sm disabled:cursor-not-allowed disabled:bg-gray-300"
+        className="w-full rounded-md bg-purple-600 px-4 py-2 text-white shadow-sm hover:bg-purple-700 disabled:cursor-not-allowed disabled:bg-purple-200"
       >
         {state.phase === "submitting" ? "처리 중..." : "구독하기"}
       </button>

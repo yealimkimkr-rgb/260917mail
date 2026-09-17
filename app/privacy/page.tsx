@@ -1,7 +1,7 @@
 export default function PrivacyPage() {
   return (
     <main className="mx-auto max-w-2xl px-4 py-12">
-      <h1 className="text-2xl font-bold">개인정보 처리방침</h1>
+      <h1 className="text-2xl font-bold text-purple-900">개인정보 처리방침</h1>
       <div className="mt-6 space-y-4 text-gray-700">
         <p>
           본 서비스는 뉴스레터 발송을 목적으로 이용자가 입력한 이메일 주소만을

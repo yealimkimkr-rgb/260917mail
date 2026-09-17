@@ -49,7 +49,7 @@ export default async function AdminSubscribersPage({
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-12">
-      <h1 className="text-2xl font-bold">구독자 목록</h1>
+      <h1 className="text-2xl font-bold text-purple-900">구독자 목록</h1>
       <p className="mt-2 text-sm text-gray-600">
         전체 {subscribers.length}명 · 인증대기 {counts.PENDING ?? 0} · 구독중{" "}
         {counts.CONFIRMED ?? 0} · 해지 {counts.UNSUBSCRIBED ?? 0}
